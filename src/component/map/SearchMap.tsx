@@ -60,7 +60,7 @@ const SearchMap = () => {
 
   const [viewport, setViewport] = useState({
     latitude: 42.37722,
-    longitude: -71.02446,
+    longitude: -71.42446,
     zoom: 8.85,
     transitionDuration: 1000
   });
