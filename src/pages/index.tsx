@@ -16,7 +16,7 @@ const impactH3Style = css`
 const IndexPage = () => (
   <React.Fragment>
     <Helmet>
-      <title>Community Types</title>
+      <title>Industrial Land Use</title>
       <link href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.css' rel='stylesheet' />
     </Helmet>
     <Layout>

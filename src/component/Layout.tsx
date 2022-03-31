@@ -59,10 +59,10 @@ const Layout: React.FC = ({ children }) => (
         }
         h2 {
           color: ${themeColors.indigo};
-          font-size: 1.7rem;
+          font-size: 2rem;
         }
         h3 {
-          font-size: 1.7rem;
+          font-size: 1.5rem;
         }
         p, li {        
           font-size: 1.5rem;

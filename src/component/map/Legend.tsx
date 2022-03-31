@@ -23,7 +23,7 @@ const legendStyle = css`
 
 const Commtypes = 
   <div css={legendStyle}>
-    <h1>Community Types</h1>
+    <h2>Community Types</h2>
     <h3>Inner Core</h3>
     <span className="dot" style={{backgroundColor: "#002C3D"}}></span>
     <p>Metro Core Community</p><br/>
@@ -46,7 +46,7 @@ const Commtypes =
 
 const Submarkets = 
   <div css={legendStyle}>
-    <h1>Housing Submarkets</h1>
+    <h2>Housing Submarkets</h2>
     <h3>Submarket 1</h3>
     <span className="dot" style={{backgroundColor: "#002C3D"}}></span>
     <p>High-Density Urban, High Prices</p><br/>
@@ -78,7 +78,7 @@ const Submarkets =
 
 const Subregions = 
   <div css={legendStyle}>
-    <h1>MAPC Subregions</h1>
+    <h2>MAPC Subregions</h2>
     <h3>Inner Core</h3>
     <span className="dot" style={{backgroundColor: "#002C3D"}}></span>
     <p>Inner Core Committee (ICC)</p><br/>

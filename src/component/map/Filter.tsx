@@ -29,6 +29,7 @@ const Filter = ({
 }) => {
     return (
       <div css={FilterStyle}>
+        <h1>Industrial Land Use</h1>
         <Basemap basemap={basemap} setBasemap={setBasemap} />
         <Legend  basemap={basemap}/>
       </div>

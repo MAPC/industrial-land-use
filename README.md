@@ -1,4 +1,4 @@
-# Community Types Map
+# Industrial Land Use Map
 
 ## Development
 

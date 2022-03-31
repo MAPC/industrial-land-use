@@ -1,8 +1,6 @@
 /** @jsx jsx */
 
-import React, {
-  useRef, useState, useCallback, useEffect, useMemo
-} from 'react';
+import React, { useRef, useState, useCallback, useEffect } from 'react';
 import { jsx, css } from '@emotion/react';
 import ReactMapGL, { Source, Layer, NavigationControl, Popup } from 'react-map-gl';
 import Geocoder from 'react-map-gl-geocoder';
@@ -11,21 +9,6 @@ const navigationStyle = css`
   bottom: 4.2rem;
   position: absolute;
   right: 1rem;
-`;
-
-const mapStyle = css`
-  height: 100vh;
-  position: absolute;
-  top: 0;
-`;
-
-const FilterContainer = css`
-  align-items: center;
-  display: flex;
-  height: 100%;
-  justify-content: end;
-  position: absolute;
-  width: 100%;
 `;
 
 const popupStyle = css`
@@ -51,7 +34,6 @@ const Commtypes = () => {
   useEffect(() => {
     if (mapRef && mapRef.current) {
       const map = mapRef.current.getMap();
-
     }
   }, []);
 
@@ -77,12 +59,6 @@ const Commtypes = () => {
       ...geocoderDefaultOverrides,
     });
   }, []);
-
-  // Community Types
-  const [type1, toggleType1] = useState(true);
-  const [type2, toggleType2] = useState(true);
-  const [type3, toggleType3] = useState(true);
-  const [type4, toggleType4] = useState(true);
 
   return (
       <ReactMapGL
@@ -140,97 +116,25 @@ const Commtypes = () => {
             source="Types"
             source-layer="mapc_cmtyp08-bawk95"
             paint={{
-              'fill-color': type1 ? [
+              'fill-color': [
                 'match',
                 ['get', 'cmsbt08_id'],
                 '382',
                 '#002C3D',
                 '384',
                 '#005F73',
-                'hsla(0, 0%, 0%, 0)'
-              ] : 'hsla(0, 0%, 0%, 0)',
-              'fill-opacity': [
-                'interpolate',
-                ['linear'],
-                ['zoom'],
-                7,
-                1,
-                10,
-                0.8,
-                13.5,
-                0
-              ]
-            }}
-          />
-          <Layer
-            type="fill"
-            id="Regional Urban Center"
-            source="Types"
-            source-layer="mapc_cmtyp08-bawk95"
-            paint={{
-              'fill-color': type2 ? [
-                'match',
-                ['get', 'cmsbt08_id'],
                 '383',
                 '#94D2BD',
-                'hsla(0, 0%, 0%, 0)'
-              ] : 'hsla(0, 0%, 0%, 0)',
-              'fill-opacity': [
-                'interpolate',
-                ['linear'],
-                ['zoom'],
-                7,
-                1,
-                10,
-                0.8,
-                13.5,
-                0
-              ]
-            }}
-          />
-          <Layer
-            type="fill"
-            id="Maturing Suburb"
-            source="Types"
-            source-layer="mapc_cmtyp08-bawk95"
-            paint={{
-              'fill-color': type3 ? [
-                'match',
-                ['get', 'cmsbt08_id'],
                 '385',
                 '#EBBD34',
                 '386',
                 '#F3D57B',
-                'hsla(0, 0%, 0%, 0)'
-              ] : 'hsla(0, 0%, 0%, 0)',
-              'fill-opacity': [
-                'interpolate',
-                ['linear'],
-                ['zoom'],
-                7,
-                1,
-                10,
-                0.8,
-                13.5,
-                0
-              ]
-            }}
-          />
-          <Layer
-            type="fill"
-            id="Developing Suburb"
-            source="Types"
-            source-layer="mapc_cmtyp08-bawk95"
-            paint={{
-              'fill-color': type4 ? [
-                'match',
-                ['get', 'cmsbt08_id'],
                 '387',
                 '#CA6702',
                 '388',
                 '#E68C31',
                 'hsla(0, 0%, 0%, 0)'
-              ] : 'hsla(0, 0%, 0%, 0)',
+              ],
               'fill-opacity': [
                 'interpolate',
                 ['linear'],

@@ -6,7 +6,7 @@ import { themeColors, fonts } from '../../utils/theme';
 import Select from 'react-select';
 
 interface BasemapProps {
-  basemap:any,
+  basemap: any,
   setBasemap: any
 }
 
@@ -38,7 +38,7 @@ const Basemap = ({
 
   return (
     <div css={BasemapStyle}>
-      <h1>Basemap</h1>
+      <h2>Basemap</h2>
       <Select 
         defaultValue={selectedOption}
         options={options} 
