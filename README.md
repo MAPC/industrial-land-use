@@ -1,54 +1,15 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
+# Community Types Map
 
-## 🚀 Quick start
+## Development
 
-1.  **Create a Gatsby site.**
+This site was built with [Gatsby](https://www.gatsbyjs.com/) and uses npm for package management. Install the Gatsby CLI with `npm i -g gatsby-cli`, then install local dependencies with `npm install`. Run the site with `gatsby develop` and clear the cache with `gatsby clean`. Create working branches off of the `develop` branch, then merge commits from `develop` into `main` when ready to deploy to production. 
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+## Mapbox
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+To edit base or source layers for the map, the credentials for [Mapbox](https://studio.mapbox.com/) can be found in [Dashlane](https://app.dashlane.com/login).
 
-2.  **Start developing.**
+Tabular datasets must be uploaded first on the Datasets page, then exported to Tilesets in order to use and style. For spatial datasets containing polygon features, upload them directly up to Tilesets, making sure that they do not exceed 10MB and are projected using the EPSG:4326 coordinate system. 
 
-    Navigate into your new site’s directory and start it up.
+## Deployment
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
-
-3.  **Open the code and start customizing!**
-
-    Your site is now running at http://localhost:8000!
-
-    Edit `src/pages/index.js` to see your site update in real-time!
-
-4.  **Learn more**
-
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-## 🚀 Quick start (Gatsby Cloud)
-
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
-
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
+This site is built from the `gh-pages` branch. To deploy changes, push code to the `main` branch, then run `npm run deploy`.
