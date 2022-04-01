@@ -101,8 +101,8 @@ const Subregions = () => {
               <div css={popupStyle}>
                 {popupSite ? 
                 <div>
-                  {/* <h1 className="popup-muni">{popupSite.TOWN}</h1> */}
-                  <h2>Subregion:<br/>{popupSite.subregion}</h2>
+                  <h1 className="popup-muni">{popupSite.municipal}</h1>
+                  <h2>Subregion:<br/>{popupSite.subreg}</h2>
                 </div>
                 :
                 ""}
@@ -120,7 +120,7 @@ const Subregions = () => {
             paint={{
               'fill-color': [
                 'match',
-                ['get', 'muni_id'],
+                ['get', 'subreg_id'],
                 355,
                 '#002C3D',
                 356,

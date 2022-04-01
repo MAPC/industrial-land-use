@@ -98,16 +98,6 @@ const SearchMap = () => {
         <Filter 
           basemap={basemap}
           setBasemap={setBasemap}
-          type1={type1}
-          toggleType1={toggleType1}
-          type2={type2}
-          toggleType2={toggleType2}
-          type3={type3}
-          toggleType3={toggleType3}
-          type4={type4}
-          toggleType4={toggleType4}
-          type5={type5}
-          toggleType5={toggleType5}
         />
       </div>
       {renderBasemap(basemap)}

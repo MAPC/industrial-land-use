@@ -46,6 +46,7 @@ const Layout: React.FC = ({ children }) => (
         font-size: 10px;
         height: 100%;
         margin: 0;
+        scroll-behavior: smooth;
       }
 
       body {
