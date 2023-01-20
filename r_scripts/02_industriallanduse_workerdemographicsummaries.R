@@ -4,8 +4,8 @@
 
 library(dplyr)
 
-#Before starting this script, run R script "20210527_industry_and_occupation_summary.R" in 
-#"K:\DataServices\Projects\Current_Projects\EconDev\Industrial_LandUse\Code"
+#Before starting this script, run R script "01_industry_and_occupation_summary.R" in 
+#GitHub repo: https://github.com/MAPC/industrial-land-use
 #Only run through line 233 (before summaries)
 
 #Filtering to workers with more than zero hours worked per week
@@ -55,7 +55,7 @@ write_csv(med_wages_ltc,
           "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/med_wages_ltc.csv")
 
 
-#############testing####################
+#############testing median code####################
 
 afs <- filter(pums_wrkrs, ind_grps=="Accomodation & Food Service")
 
