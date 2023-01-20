@@ -2,6 +2,8 @@
 # Variables considered for cross-tabulation are
 # Created By: Aseem Deodhar
 # Created Date: 2021_05_27
+# Edited by: Jessie Partridge Guerrero
+# Edited date: 1/20/2023
 
 # packages
 library(tidyverse)
@@ -231,201 +233,205 @@ pums_person <-
     by = c("OCCP" = "acs_code")
   )
 
-# Wage Level Cross Tabulations --------------------------------------------
-# Cross Tabulations of Industry and Educational Attainment Levels, Race, English Proficiency for Wage statistics ----
 
-# Educational Attainment:
-xtab_edu_attain <-
-  pums_person %>% 
-  group_by(ind_grps, p_edu, wrk_hrs) %>% 
-  summarise(infadj_wage_avg = mean(infadj_wage),
-            infadj_wage_med = median(infadj_wage),
-            infadj_wage_25p = quantile(infadj_wage, c(0.25)),
-            infadj_wage_75p = quantile(infadj_wage, c(0.75)),
-            infadj_wage_95p = quantile(infadj_wage, c(0.95)),
-            age_avg = mean(AGEP),
-            age_med = median(AGEP),
-            count = n())
-write_csv(xtab_edu_attain, 
-          "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/xtab_edu_attain_ftpt.csv")
+# Jessie 1/20/2023: Commenting out the remaining code because median calculations do not account for PUMS weights and are therefore inaccurate
+# Jessie 1/20/2023: To run cross tabulations, run script "02_industriallanduse_workerdemographicsummaries.R"
 
-sum(xtab_edu_attain$count)
-
-# Race:
-xtab_race <-
-  pums_person %>% 
-  group_by(ind_grps, p_race, wrk_hrs) %>% 
-  summarise(infadj_wage_avg = mean(infadj_wage),
-            infadj_wage_med = median(infadj_wage),
-            infadj_wage_25p = quantile(infadj_wage, c(0.25)),
-            infadj_wage_75p = quantile(infadj_wage, c(0.75)),
-            infadj_wage_95p = quantile(infadj_wage, c(0.95)),
-            age_avg = mean(AGEP),
-            age_med = median(AGEP),
-            count = n())
-write_csv(xtab_race, 
-          "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/xtab_race_ftpt.csv")
-
-# English Proficency:
-xtab_english <-
-  pums_person %>% 
-  group_by(ind_grps, p_eng, wrk_hrs) %>% 
-  summarise(infadj_wage_avg = mean(infadj_wage),
-            infadj_wage_med = median(infadj_wage),
-            infadj_wage_25p = quantile(infadj_wage, c(0.25)),
-            infadj_wage_75p = quantile(infadj_wage, c(0.75)),
-            infadj_wage_95p = quantile(infadj_wage, c(0.95)),
-            age_avg = mean(AGEP),
-            age_med = median(AGEP),
-            count = n())
-write_csv(xtab_english, 
-          "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/xtab_english_ftpt.csv")
-
-
-# Cross Tabulations of Industry | Occupation Codes (Major Groups) and Educational Attainment Levels, Race, English Proficiency for Wage statistics ----
-
-# Educational Attainment:
-xtab_edu_attain_occp <-
-  pums_person %>% 
-  group_by(ind_grps, major_desc, p_edu, wrk_hrs) %>% 
-  summarise(infadj_wage_avg = mean(infadj_wage),
-            infadj_wage_med = median(infadj_wage),
-            infadj_wage_25p = quantile(infadj_wage, c(0.25)),
-            infadj_wage_75p = quantile(infadj_wage, c(0.75)),
-            infadj_wage_95p = quantile(infadj_wage, c(0.95)),
-            age_avg = mean(AGEP),
-            age_med = median(AGEP),
-            count = n())
-write_csv(xtab_edu_attain_occp, 
-          "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/xtab_edu_attain_occp_ftpt.csv")
-
-sum(xtab_edu_attain_occp$count)
-
-# Race:
-xtab_race_occp <-
-  pums_person %>% 
-  group_by(ind_grps, major_desc, p_race, wrk_hrs) %>% 
-  summarise(infadj_wage_avg = mean(infadj_wage),
-            infadj_wage_med = median(infadj_wage),
-            infadj_wage_25p = quantile(infadj_wage, c(0.25)),
-            infadj_wage_75p = quantile(infadj_wage, c(0.75)),
-            infadj_wage_95p = quantile(infadj_wage, c(0.95)),
-            age_avg = mean(AGEP),
-            age_med = median(AGEP),
-            count = n())
-write_csv(xtab_race_occp, 
-          "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/xtab_race_occp_ftpt.csv")
-
-# English Proficency:
-xtab_english_occp <-
-  pums_person %>% 
-  group_by(ind_grps, major_desc, p_eng, wrk_hrs) %>% 
-  summarise(infadj_wage_avg = mean(infadj_wage),
-            infadj_wage_med = median(infadj_wage),
-            infadj_wage_25p = quantile(infadj_wage, c(0.25)),
-            infadj_wage_75p = quantile(infadj_wage, c(0.75)),
-            infadj_wage_95p = quantile(infadj_wage, c(0.95)),
-            age_avg = mean(AGEP),
-            age_med = median(AGEP),
-            count = n())
-write_csv(xtab_english_occp, 
-          "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/xtab_english_occp_ftpt.csv")
-
-
-# Travel Time Cross Tabulations -------------------------------------------
-# Cross Tabulations of Industry and Educational Attainment Levels, Race, English Proficiency for Wage statistics ----
-
-# Educational Attainment:
-xtab_edu_attain_ttw <-
-  pums_person %>% 
-  group_by(ind_grps, p_edu, wrk_hrs) %>% 
-  summarise(ttw_mins_avg = mean(ttw_mins),
-            ttw_mins_med = median(ttw_mins),
-            ttw_mins_25p = quantile(ttw_mins, c(0.25)),
-            ttw_mins_75p = quantile(ttw_mins, c(0.75)),
-            ttw_mins_95p = quantile(ttw_mins, c(0.95)),
-            age_avg = mean(AGEP),
-            age_med = median(AGEP),
-            count = n())
-write_csv(xtab_edu_attain_ttw, 
-          "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/xtab_edu_attain_ttw.csv")
-
-
-# Race:
-xtab_race_ttw <-
-  pums_person %>% 
-  group_by(ind_grps, p_race, wrk_hrs) %>% 
-  summarise(ttw_mins_avg = mean(ttw_mins),
-            ttw_mins_med = median(ttw_mins),
-            ttw_mins_25p = quantile(ttw_mins, c(0.25)),
-            ttw_mins_75p = quantile(ttw_mins, c(0.75)),
-            ttw_mins_95p = quantile(ttw_mins, c(0.95)),
-            age_avg = mean(AGEP),
-            age_med = median(AGEP),
-            count = n())
-write_csv(xtab_race_ttw, 
-          "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/xtab_race_ttw.csv")
-
-# English Proficency:
-xtab_english_ttw <-
-  pums_person %>% 
-  group_by(ind_grps, p_eng, wrk_hrs) %>% 
-  summarise(ttw_mins_avg = mean(ttw_mins),
-            ttw_mins_med = median(ttw_mins),
-            ttw_mins_25p = quantile(ttw_mins, c(0.25)),
-            ttw_mins_75p = quantile(ttw_mins, c(0.75)),
-            ttw_mins_95p = quantile(ttw_mins, c(0.95)),
-            age_avg = mean(AGEP),
-            age_med = median(AGEP),
-            count = n())
-write_csv(xtab_english_ttw, 
-          "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/xtab_english_ttw.csv")
-
-
-# Cross Tabulations of Industry | Occupation Codes (Major Groups) and Educational Attainment Levels, Race, English Proficiency for Wage statistics ----
-
-# Educational Attainment:
-xtab_edu_attain_occp_ttw <-
-  pums_person %>% 
-  group_by(ind_grps, major_desc, p_edu, wrk_hrs) %>% 
-  summarise(ttw_mins_avg = mean(ttw_mins),
-            ttw_mins_med = median(ttw_mins),
-            ttw_mins_25p = quantile(ttw_mins, c(0.25)),
-            ttw_mins_75p = quantile(ttw_mins, c(0.75)),
-            ttw_mins_95p = quantile(ttw_mins, c(0.95)),
-            age_avg = mean(AGEP),
-            age_med = median(AGEP),
-            count = n())
-write_csv(xtab_edu_attain_occp_ttw, 
-          "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/xtab_edu_attain_occp_ttw.csv")
-
-
-# Race:
-xtab_race_occp_ttw <-
-  pums_person %>% 
-  group_by(ind_grps, major_desc, p_race, wrk_hrs) %>% 
-  summarise(ttw_mins_avg = mean(ttw_mins),
-            ttw_mins_med = median(ttw_mins),
-            ttw_mins_25p = quantile(ttw_mins, c(0.25)),
-            ttw_mins_75p = quantile(ttw_mins, c(0.75)),
-            ttw_mins_95p = quantile(ttw_mins, c(0.95)),
-            age_avg = mean(AGEP),
-            age_med = median(AGEP),
-            count = n())
-write_csv(xtab_race_occp_ttw, 
-          "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/xtab_race_occp_ttw.csv")
-
-# English Proficency:
-xtab_english_occp_ttw <-
-  pums_person %>% 
-  group_by(ind_grps, major_desc, p_eng, wrk_hrs) %>% 
-  summarise(ttw_mins_avg = mean(ttw_mins),
-            ttw_mins_med = median(ttw_mins),
-            ttw_mins_25p = quantile(ttw_mins, c(0.25)),
-            ttw_mins_75p = quantile(ttw_mins, c(0.75)),
-            ttw_mins_95p = quantile(ttw_mins, c(0.95)),
-            age_avg = mean(AGEP),
-            age_med = median(AGEP),
-            count = n())
-write_csv(xtab_english_occp_ttw, 
-          "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/xtab_english_occp_ttw.csv")
+# # Wage Level Cross Tabulations --------------------------------------------
+# # Cross Tabulations of Industry and Educational Attainment Levels, Race, English Proficiency for Wage statistics ----
+# 
+# # Educational Attainment:
+# xtab_edu_attain <-
+#   pums_person %>% 
+#   group_by(ind_grps, p_edu, wrk_hrs) %>% 
+#   summarise(infadj_wage_avg = mean(infadj_wage),
+#             infadj_wage_med = median(infadj_wage),
+#             infadj_wage_25p = quantile(infadj_wage, c(0.25)),
+#             infadj_wage_75p = quantile(infadj_wage, c(0.75)),
+#             infadj_wage_95p = quantile(infadj_wage, c(0.95)),
+#             age_avg = mean(AGEP),
+#             age_med = median(AGEP),
+#             count = n())
+# write_csv(xtab_edu_attain, 
+#           "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/xtab_edu_attain_ftpt.csv")
+# 
+# sum(xtab_edu_attain$count)
+# 
+# # Race:
+# xtab_race <-
+#   pums_person %>% 
+#   group_by(ind_grps, p_race, wrk_hrs) %>% 
+#   summarise(infadj_wage_avg = mean(infadj_wage),
+#             infadj_wage_med = median(infadj_wage),
+#             infadj_wage_25p = quantile(infadj_wage, c(0.25)),
+#             infadj_wage_75p = quantile(infadj_wage, c(0.75)),
+#             infadj_wage_95p = quantile(infadj_wage, c(0.95)),
+#             age_avg = mean(AGEP),
+#             age_med = median(AGEP),
+#             count = n())
+# write_csv(xtab_race, 
+#           "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/xtab_race_ftpt.csv")
+# 
+# # English Proficency:
+# xtab_english <-
+#   pums_person %>% 
+#   group_by(ind_grps, p_eng, wrk_hrs) %>% 
+#   summarise(infadj_wage_avg = mean(infadj_wage),
+#             infadj_wage_med = median(infadj_wage),
+#             infadj_wage_25p = quantile(infadj_wage, c(0.25)),
+#             infadj_wage_75p = quantile(infadj_wage, c(0.75)),
+#             infadj_wage_95p = quantile(infadj_wage, c(0.95)),
+#             age_avg = mean(AGEP),
+#             age_med = median(AGEP),
+#             count = n())
+# write_csv(xtab_english, 
+#           "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/xtab_english_ftpt.csv")
+# 
+# 
+# # Cross Tabulations of Industry | Occupation Codes (Major Groups) and Educational Attainment Levels, Race, English Proficiency for Wage statistics ----
+# 
+# # Educational Attainment:
+# xtab_edu_attain_occp <-
+#   pums_person %>% 
+#   group_by(ind_grps, major_desc, p_edu, wrk_hrs) %>% 
+#   summarise(infadj_wage_avg = mean(infadj_wage),
+#             infadj_wage_med = median(infadj_wage),
+#             infadj_wage_25p = quantile(infadj_wage, c(0.25)),
+#             infadj_wage_75p = quantile(infadj_wage, c(0.75)),
+#             infadj_wage_95p = quantile(infadj_wage, c(0.95)),
+#             age_avg = mean(AGEP),
+#             age_med = median(AGEP),
+#             count = n())
+# write_csv(xtab_edu_attain_occp, 
+#           "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/xtab_edu_attain_occp_ftpt.csv")
+# 
+# sum(xtab_edu_attain_occp$count)
+# 
+# # Race:
+# xtab_race_occp <-
+#   pums_person %>% 
+#   group_by(ind_grps, major_desc, p_race, wrk_hrs) %>% 
+#   summarise(infadj_wage_avg = mean(infadj_wage),
+#             infadj_wage_med = median(infadj_wage),
+#             infadj_wage_25p = quantile(infadj_wage, c(0.25)),
+#             infadj_wage_75p = quantile(infadj_wage, c(0.75)),
+#             infadj_wage_95p = quantile(infadj_wage, c(0.95)),
+#             age_avg = mean(AGEP),
+#             age_med = median(AGEP),
+#             count = n())
+# write_csv(xtab_race_occp, 
+#           "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/xtab_race_occp_ftpt.csv")
+# 
+# # English Proficency:
+# xtab_english_occp <-
+#   pums_person %>% 
+#   group_by(ind_grps, major_desc, p_eng, wrk_hrs) %>% 
+#   summarise(infadj_wage_avg = mean(infadj_wage),
+#             infadj_wage_med = median(infadj_wage),
+#             infadj_wage_25p = quantile(infadj_wage, c(0.25)),
+#             infadj_wage_75p = quantile(infadj_wage, c(0.75)),
+#             infadj_wage_95p = quantile(infadj_wage, c(0.95)),
+#             age_avg = mean(AGEP),
+#             age_med = median(AGEP),
+#             count = n())
+# write_csv(xtab_english_occp, 
+#           "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/xtab_english_occp_ftpt.csv")
+# 
+# 
+# # Travel Time Cross Tabulations -------------------------------------------
+# # Cross Tabulations of Industry and Educational Attainment Levels, Race, English Proficiency for Wage statistics ----
+# 
+# # Educational Attainment:
+# xtab_edu_attain_ttw <-
+#   pums_person %>% 
+#   group_by(ind_grps, p_edu, wrk_hrs) %>% 
+#   summarise(ttw_mins_avg = mean(ttw_mins),
+#             ttw_mins_med = median(ttw_mins),
+#             ttw_mins_25p = quantile(ttw_mins, c(0.25)),
+#             ttw_mins_75p = quantile(ttw_mins, c(0.75)),
+#             ttw_mins_95p = quantile(ttw_mins, c(0.95)),
+#             age_avg = mean(AGEP),
+#             age_med = median(AGEP),
+#             count = n())
+# write_csv(xtab_edu_attain_ttw, 
+#           "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/xtab_edu_attain_ttw.csv")
+# 
+# 
+# # Race:
+# xtab_race_ttw <-
+#   pums_person %>% 
+#   group_by(ind_grps, p_race, wrk_hrs) %>% 
+#   summarise(ttw_mins_avg = mean(ttw_mins),
+#             ttw_mins_med = median(ttw_mins),
+#             ttw_mins_25p = quantile(ttw_mins, c(0.25)),
+#             ttw_mins_75p = quantile(ttw_mins, c(0.75)),
+#             ttw_mins_95p = quantile(ttw_mins, c(0.95)),
+#             age_avg = mean(AGEP),
+#             age_med = median(AGEP),
+#             count = n())
+# write_csv(xtab_race_ttw, 
+#           "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/xtab_race_ttw.csv")
+# 
+# # English Proficency:
+# xtab_english_ttw <-
+#   pums_person %>% 
+#   group_by(ind_grps, p_eng, wrk_hrs) %>% 
+#   summarise(ttw_mins_avg = mean(ttw_mins),
+#             ttw_mins_med = median(ttw_mins),
+#             ttw_mins_25p = quantile(ttw_mins, c(0.25)),
+#             ttw_mins_75p = quantile(ttw_mins, c(0.75)),
+#             ttw_mins_95p = quantile(ttw_mins, c(0.95)),
+#             age_avg = mean(AGEP),
+#             age_med = median(AGEP),
+#             count = n())
+# write_csv(xtab_english_ttw, 
+#           "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/xtab_english_ttw.csv")
+# 
+# 
+# # Cross Tabulations of Industry | Occupation Codes (Major Groups) and Educational Attainment Levels, Race, English Proficiency for Wage statistics ----
+# 
+# # Educational Attainment:
+# xtab_edu_attain_occp_ttw <-
+#   pums_person %>% 
+#   group_by(ind_grps, major_desc, p_edu, wrk_hrs) %>% 
+#   summarise(ttw_mins_avg = mean(ttw_mins),
+#             ttw_mins_med = median(ttw_mins),
+#             ttw_mins_25p = quantile(ttw_mins, c(0.25)),
+#             ttw_mins_75p = quantile(ttw_mins, c(0.75)),
+#             ttw_mins_95p = quantile(ttw_mins, c(0.95)),
+#             age_avg = mean(AGEP),
+#             age_med = median(AGEP),
+#             count = n())
+# write_csv(xtab_edu_attain_occp_ttw, 
+#           "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/xtab_edu_attain_occp_ttw.csv")
+# 
+# 
+# # Race:
+# xtab_race_occp_ttw <-
+#   pums_person %>% 
+#   group_by(ind_grps, major_desc, p_race, wrk_hrs) %>% 
+#   summarise(ttw_mins_avg = mean(ttw_mins),
+#             ttw_mins_med = median(ttw_mins),
+#             ttw_mins_25p = quantile(ttw_mins, c(0.25)),
+#             ttw_mins_75p = quantile(ttw_mins, c(0.75)),
+#             ttw_mins_95p = quantile(ttw_mins, c(0.95)),
+#             age_avg = mean(AGEP),
+#             age_med = median(AGEP),
+#             count = n())
+# write_csv(xtab_race_occp_ttw, 
+#           "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/xtab_race_occp_ttw.csv")
+# 
+# # English Proficency:
+# xtab_english_occp_ttw <-
+#   pums_person %>% 
+#   group_by(ind_grps, major_desc, p_eng, wrk_hrs) %>% 
+#   summarise(ttw_mins_avg = mean(ttw_mins),
+#             ttw_mins_med = median(ttw_mins),
+#             ttw_mins_25p = quantile(ttw_mins, c(0.25)),
+#             ttw_mins_75p = quantile(ttw_mins, c(0.75)),
+#             ttw_mins_95p = quantile(ttw_mins, c(0.95)),
+#             age_avg = mean(AGEP),
+#             age_med = median(AGEP),
+#             count = n())
+# write_csv(xtab_english_occp_ttw, 
+#           "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/xtab_english_occp_ttw.csv")
