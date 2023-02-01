@@ -37,6 +37,20 @@ med_wages <-
             tot = sum(PWGTP),
             count = n())
 
+med_wag_race <-
+  pums_wrkrs %>% 
+  group_by(ind_grps, p_race) %>% 
+  summarise(mdwg = median(rep(infadj_wage, PWGTP)),
+            tot = sum(PWGTP),
+            count = n())
+
+med_wag_race_prod <-
+  pums_wrkrs %>% 
+  group_by(major_desc, p_race) %>% 
+  summarise(mdwg = median(rep(infadj_wage, PWGTP)),
+            tot = sum(PWGTP),
+            count = n())
+
 
 #Filtering to workers with less than a college degree (filtering out Associates, Bachelors, and Masters)
 pums_wrkrs_ltc <- filter(pums_wrkrs, p_edu != "Associates Degree" & p_edu != "Bachelors Degree" & p_edu != "Masters or more")
@@ -48,11 +62,39 @@ med_wages_ltc <-
             tot = sum(PWGTP),
             count = n())
 
+med_wag_race_ltc <-
+  pums_wrkrs_ltc %>% 
+  group_by(ind_grps, p_race) %>% 
+  summarise(mdwg = median(rep(infadj_wage, PWGTP)),
+            tot = sum(PWGTP),
+            count = n())
+
+med_wag_race_ltc_prod <-
+  pums_wrkrs_ltc %>% 
+  group_by(major_desc, p_race) %>% 
+  summarise(mdwg = median(rep(infadj_wage, PWGTP)),
+            tot = sum(PWGTP),
+            count = n())
+
+# Writing outputs to K
+
 write_csv(med_wages, 
           "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/med_wages.csv")
 
 write_csv(med_wages_ltc, 
           "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/med_wages_ltc.csv")
+
+write_csv(med_wag_race, 
+          "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/med_wages_race.csv")
+
+write_csv(med_wag_race_ltc, 
+          "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/med_wages_race_ltc.csv")
+
+write_csv(med_wag_race_prod, 
+          "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/med_wages_race_prod.csv")
+
+write_csv(med_wag_race_ltc_prod, 
+          "K:/DataServices/Projects/Current_Projects/EconDev/Industrial_LandUse/Output/Data/med_wages_race_ltc_prod.csv")
 
 
 #############testing median code####################
